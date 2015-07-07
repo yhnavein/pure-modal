@@ -3,7 +3,7 @@ Simple, flexible and beautiful modal dialogs in AngularJS.
 
 
 ## Demo
-  - [GitHub](http://lukaszwatroba.github.io/v-modal)
+  - [GitHub](http://yhnavein.github.io/tb-modal)
 
 
 ## Installation

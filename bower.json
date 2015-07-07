@@ -1,6 +1,6 @@
 {
-  "name": "v-modal",
-  "description": "vModal - Simple, flexible and beautiful modal dialogs in AngularJS",
+  "name": "tb-modal",
+  "description": "tbModal - based on vModal - Simple and beautiful modals for AngularJS and Twitter Bootstrap",
   "keywords": [
     "AngularJS",
     "dialog",
@@ -12,6 +12,7 @@
     "module"
   ],
   "authors": [
+    "Piotrek Dąbrowski <admin@puredev.eu>",
     "Łukasz Wątroba <l@lukaszwatroba.com>"
   ],
   "main": [
