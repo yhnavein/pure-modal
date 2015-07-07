@@ -1,3 +1,4 @@
+'use strict';
 var pkg = require('./package.json');
 
 var banner = '/**\n' +
@@ -14,38 +15,36 @@ var gulp = require('gulp'),
     concat = require('gulp-concat'),
     uglify = require('gulp-uglify'),
     rename = require('gulp-rename'),
-    sass = require('gulp-sass');
+    sass = require('gulp-sass'),
     autoprefixer = require('gulp-autoprefixer'),
     minifycss = require('gulp-minify-css'),
     header = require('gulp-header');
 
 gulp.task('scripts', function() {
   gulp.src([
-      'src/vModal/vModal.prefix',
-      'src/vModal/*.js',
-      'src/vModal/directives/*.js',
-      'src/vModal/services/*.js',
-      'src/vModal/vModal.suffix'
+      'src/*.js',
+      'src/directives/*.js',
+      'src/services/*.js'
     ])
     .pipe(concat('v-modal.js'))
-    .pipe(header(banner, { pkg : pkg } ))
+    .pipe(header(banner, { pkg: pkg } ))
     .pipe(gulp.dest('./dist/'))
     .pipe(uglify())
     .pipe(rename('v-modal.min.js'))
-    .pipe(header(banner, { pkg : pkg } ))
-    .pipe(gulp.dest('./dist'))
+    .pipe(header(banner, { pkg: pkg } ))
+    .pipe(gulp.dest('./dist'));
 });
 
 gulp.task('styles', function() {
-  return gulp.src('src/vModal/styles/*.scss')
+  return gulp.src('src/styles/*.scss')
     .pipe(sass({style: 'expanded'}))
     .pipe(autoprefixer('last 2 version'))
-    .pipe(header(banner, { pkg : pkg } ))
+    .pipe(header(banner, { pkg: pkg } ))
     .pipe(gulp.dest('dist/'))
     .pipe(rename({suffix: '.min'} ))
     .pipe(minifycss())
-    .pipe(header(banner, { pkg : pkg } ))
-    .pipe(gulp.dest('dist/'))
+    .pipe(header(banner, { pkg: pkg } ))
+    .pipe(gulp.dest('dist/'));
 });
 
 gulp.task('test', function (done) {
@@ -56,17 +55,13 @@ gulp.task('test', function (done) {
 });
 
 gulp.task('lint-src', function() {
-  return gulp.src([
-      'src/vModal/**/*.js',
-    ])
+  return gulp.src([ 'src/**/*.js' ])
     .pipe(jshint('.jshintrc'))
     .pipe(jshint.reporter('jshint-stylish'));
 });
 
 gulp.task('lint-tests', function() {
-  return gulp.src([
-      'test/**/*Spec.js'
-    ])
+  return gulp.src([ 'test/**/*Spec.js' ])
     .pipe(jshint('.jshintrc'))
     .pipe(jshint.reporter('jshint-stylish'));
 });
@@ -74,8 +69,8 @@ gulp.task('lint-tests', function() {
 gulp.task('default', ['lint-src', 'test', 'scripts', 'styles']);
 
 gulp.task('watch', function() {
-  gulp.watch('src/vModal/**/*.js', ['lint-src', 'scripts']);
+  gulp.watch('src/**/*.js', ['lint-src', 'scripts']);
   gulp.watch('test/**/*.spec.js', ['lint-tests', 'test']);
-  
-  gulp.watch('src/vModal/styles/**/*.scss', ['styles']);
+
+  gulp.watch('src/styles/**/*.scss', ['styles']);
 });

@@ -9,7 +9,7 @@ describe('v-modal service', function() {
   beforeEach(module('vModal'));
 
   beforeEach(inject(function(_vModal_, _$rootScope_, $templateCache) {
-    vModal  = _vModal_;
+    vModal = _vModal_;
     $rootScope = _$rootScope_;
     $rootScope.greeting = 'こんばんは';
 
@@ -25,7 +25,7 @@ describe('v-modal service', function() {
   });
 
 
-    
+
   it('should not show a modal initially', function() {
     var modal = vModal({
       templateUrl: 'test.html',
@@ -93,7 +93,7 @@ describe('v-modal service', function() {
     var modal = vModal({
       template: '<span>{{greeting}}</span>',
       controller: function ($scope) {
-        $scope.greeting = 'goodnight'
+        $scope.greeting = 'goodnight';
       },
       container: container
     });
@@ -109,7 +109,7 @@ describe('v-modal service', function() {
     var modal = vModal({
       template: '<span>{{ctrl.greeting}}</span>',
       controller: function () {
-        this.greeting = 'boa noite'
+        this.greeting = 'boa noite';
       },
       controllerAs: 'ctrl',
       container: container

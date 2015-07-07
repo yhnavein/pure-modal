@@ -14,8 +14,8 @@ describe('', function() {
     dependencies = angular.module('vModal').requires;
   });
 
-  
-  
+
+
   it('should load config module', function () {
     expect(hasModule('vModal.config')).toBe(true);
   });
@@ -29,6 +29,6 @@ describe('', function() {
   it('should load services module', function () {
     expect(hasModule('vModal.services')).toBe(true);
   });
-  
+
 
 });

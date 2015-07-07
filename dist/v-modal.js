@@ -1,13 +1,10 @@
 /**
- * vModal - Simple, flexible and beautiful modal dialogs in AngularJS
+ * tbModal - based on vModal - Simple and beautiful modals for AngularJS and Twitter Bootstrap
  * @version v1.3.2
- * @link http://lukaszwatroba.github.io/v-modal
- * @author Łukasz Wątroba <l@lukaszwatroba.com>
+ * @link http://yhnavein.github.io/tb-modal
+ * @author Piotrek Dąbrowski <admin@puredev.eu>
  * @license MIT License, http://www.opensource.org/licenses/MIT
  */
-
-(function (angular) {
-'use strict';
 
 
 
@@ -108,7 +105,7 @@ function vModalDirective () {
       transclude(scope.$parent, function(clone) {
         iElement.append(clone);
       });
-			
+
 			scope.closeMethod = (angular.isFunction(scope.closeMethod)) ? scope.closeMethod : angular.noop;
 
       function isClose (el) {
@@ -133,15 +130,9 @@ function vModalDirective () {
 }
 
 
-/*
-* @license
-* angular-modal v0.5.0
-* (c) 2013 Brian Ford http://briantford.com
-* License: MIT
-*/
-
-
+/*jslint bitwise: true */
 // vModal service
+'use strict';
 angular.module('vModal.services')
 .factory('vModal', vModalFactory);
 
@@ -151,10 +142,10 @@ function vModalFactory ($animate, $compile, $rootScope, $controller, $q, $http, 
       throw new Error('Expected modal to have exacly one of either `template` or `templateUrl`');
     }
 
-    var controller    = config.controller || null,
-    controllerAs  = config.controllerAs,
-    container     = angular.element(config.container || $document[0].querySelector(modalConfig.containerSelector)),
-    element       = null,
+    var controller = config.controller || null,
+    controllerAs = config.controllerAs,
+    container = angular.element(config.container || $document[0].querySelector(modalConfig.containerSelector)),
+    element = null,
     html,
     scope;
 
@@ -170,16 +161,16 @@ function vModalFactory ($animate, $compile, $rootScope, $controller, $q, $http, 
     }
 
     function activate (locals) {
-      return html.then(function (html) {
+      return html.then(function ($html) {
         if (!element) {
-          attach(html, locals);
+          attach($html, locals);
         }
       });
     }
 
-
-    function attach (html, locals) {
-      element = angular.element(html);
+    function attach ($html, locals) {
+      var prop;
+      element = angular.element($html);
       if (element.length === 0) {
         throw new Error('The template contains no elements; you need to wrap text nodes');
       }
@@ -188,7 +179,7 @@ function vModalFactory ($animate, $compile, $rootScope, $controller, $q, $http, 
         if (!locals) {
           locals = {};
         }
-        for (var prop in locals) {
+        for (prop in locals) {
           scope[prop] = locals[prop];
         }
         var ctrl = $controller(controller, {$scope: scope});
@@ -196,7 +187,7 @@ function vModalFactory ($animate, $compile, $rootScope, $controller, $q, $http, 
           scope[controllerAs] = ctrl;
         }
       } else if (locals) {
-        for (var prop in locals) {
+        for (prop in locals) {
           scope[prop] = locals[prop];
         }
       }
@@ -231,5 +222,3 @@ function vModalFactory ($animate, $compile, $rootScope, $controller, $q, $http, 
 }
 
 vModalFactory.$inject = ['$animate', '$compile', '$rootScope', '$controller', '$q', '$http', '$templateCache', '$document', 'modalConfig'];
-
-}(angular));

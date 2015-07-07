@@ -17,7 +17,7 @@ function vModalDirective () {
       transclude(scope.$parent, function(clone) {
         iElement.append(clone);
       });
-			
+
 			scope.closeMethod = (angular.isFunction(scope.closeMethod)) ? scope.closeMethod : angular.noop;
 
       function isClose (el) {
