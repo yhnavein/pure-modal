@@ -1,7 +1,7 @@
 /*jslint bitwise: true */
 // vModal service
 'use strict';
-angular.module('vModal.services')
+angular.module('vModal')
 .factory('vModal', vModalFactory);
 
 function vModalFactory ($animate, $compile, $rootScope, $controller, $q, $http, $templateCache, $document, modalConfig) {

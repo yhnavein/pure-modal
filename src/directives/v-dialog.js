@@ -1,7 +1,7 @@
 
 
 // vDialog directive
-angular.module('vModal.directives')
+angular.module('vModal')
   .directive('vDialog', vDialogDirective);
 
 

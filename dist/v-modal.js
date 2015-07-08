@@ -7,30 +7,15 @@
  */
 
 
-
 // Config
-angular.module('vModal.config', [])
+angular.module('vModal', ['ngAnimate'])
   .constant('modalConfig', {
     containerSelector: 'body'
   });
 
 
-// Modules
-angular.module('vModal.directives', []);
-angular.module('vModal.services', []);
-angular.module('vModal',
-  [
-    'ngAnimate',
-
-    'vModal.config',
-    'vModal.directives',
-    'vModal.services'
-  ]);
-
-
-
 // vClose directive
-angular.module('vModal.directives')
+angular.module('vModal')
   .directive('vClose', vCloseDirective);
 
 
@@ -55,7 +40,7 @@ function vCloseDirective () {
 
 
 // vDialog directive
-angular.module('vModal.directives')
+angular.module('vModal')
   .directive('vDialog', vDialogDirective);
 
 
@@ -89,7 +74,7 @@ function vDialogDirective () {
 
 
 // vModal directive
-angular.module('vModal.directives')
+angular.module('vModal')
   .directive('vModal', vModalDirective);
 
 
@@ -133,7 +118,7 @@ function vModalDirective () {
 /*jslint bitwise: true */
 // vModal service
 'use strict';
-angular.module('vModal.services')
+angular.module('vModal')
 .factory('vModal', vModalFactory);
 
 function vModalFactory ($animate, $compile, $rootScope, $controller, $q, $http, $templateCache, $document, modalConfig) {
