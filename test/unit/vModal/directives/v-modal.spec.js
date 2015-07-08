@@ -1,5 +1,5 @@
 describe('v-modal directive', function () {
-  
+
   var $compile;
   var scope;
 
@@ -62,7 +62,7 @@ describe('v-modal directive', function () {
     spyOn(scope, 'closeModal');
 
     modal.click();
-    
+
     expect(scope.closeModal).toHaveBeenCalled();
   });
 
@@ -78,7 +78,7 @@ describe('v-modal directive', function () {
     spyOn(scope, 'closeModal');
 
     vClose.click();
-    
+
     expect(scope.closeModal).toHaveBeenCalled();
   });
 

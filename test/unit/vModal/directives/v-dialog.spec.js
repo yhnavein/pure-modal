@@ -1,5 +1,5 @@
 describe('v-dialog directive', function () {
-  
+
   var $compile;
   var scope;
 
@@ -52,7 +52,7 @@ describe('v-dialog directive', function () {
 
   it('should focus', inject(function ($document) {
     var template = $(generateTemplate());
-    
+
     template.appendTo($document[0].body)
 
     var modal = $compile(template)(scope);

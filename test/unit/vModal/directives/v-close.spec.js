@@ -1,5 +1,5 @@
 describe('v-close directive', function () {
-  
+
   var $compile;
   var scope;
 

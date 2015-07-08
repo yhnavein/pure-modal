@@ -15,8 +15,7 @@ var gulp = require('gulp'),
     concat = require('gulp-concat'),
     uglify = require('gulp-uglify'),
     rename = require('gulp-rename'),
-    sass = require('gulp-sass'),
-    autoprefixer = require('gulp-autoprefixer'),
+    less = require('gulp-less'),
     minifycss = require('gulp-minify-css'),
     header = require('gulp-header');
 
@@ -36,9 +35,8 @@ gulp.task('scripts', function() {
 });
 
 gulp.task('styles', function() {
-  return gulp.src('src/styles/*.scss')
-    .pipe(sass({style: 'expanded'}))
-    .pipe(autoprefixer('last 2 version'))
+  return gulp.src('src/less/tb-modal.less')
+    .pipe(less())
     .pipe(header(banner, { pkg: pkg } ))
     .pipe(gulp.dest('dist/'))
     .pipe(rename({suffix: '.min'} ))
@@ -72,5 +70,5 @@ gulp.task('watch', function() {
   gulp.watch('src/**/*.js', ['lint-src', 'scripts']);
   gulp.watch('test/**/*.spec.js', ['lint-tests', 'test']);
 
-  gulp.watch('src/styles/**/*.scss', ['styles']);
+  gulp.watch('src/styles/**/*.less', ['styles']);
 });
