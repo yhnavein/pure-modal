@@ -1,7 +1,7 @@
 /**
- * tbModal - based on vModal - Simple and beautiful modals for AngularJS and Twitter Bootstrap
+ * pureModal - based on vModal - Simple and beautiful modals for AngularJS and Twitter Bootstrap
  * @version v1.3.2
- * @link http://yhnavein.github.io/tb-modal
+ * @link http://yhnavein.github.io/pure-modal
  * @author Piotrek Dąbrowski <admin@puredev.eu>
  * @license MIT License, http://www.opensource.org/licenses/MIT
  */

@@ -25,17 +25,17 @@ gulp.task('scripts', function() {
       'src/directives/*.js',
       'src/services/*.js'
     ])
-    .pipe(concat('v-modal.js'))
+    .pipe(concat('pure-modal.js'))
     .pipe(header(banner, { pkg: pkg } ))
     .pipe(gulp.dest('./dist/'))
     .pipe(uglify())
-    .pipe(rename('v-modal.min.js'))
+    .pipe(rename('pure-modal.min.js'))
     .pipe(header(banner, { pkg: pkg } ))
     .pipe(gulp.dest('./dist'));
 });
 
 gulp.task('styles', function() {
-  return gulp.src('src/less/tb-modal.less')
+  return gulp.src('src/less/pure-modal.less')
     .pipe(less())
     .pipe(header(banner, { pkg: pkg } ))
     .pipe(gulp.dest('dist/'))
