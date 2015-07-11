@@ -4,7 +4,7 @@
   angular.module('myApp',
     [
       'ngAnimate',
-      'vModal'
+      'pureModal'
     ])
 
     .config(function ($compileProvider) {
@@ -12,24 +12,24 @@
     })
 
 
-    .factory('loginModal', function (vModal) {
-      return vModal({
+    .factory('loginModal', function (pureModal) {
+      return pureModal({
         controller: 'LoginController',
         controllerAs: 'loginModal',
         templateUrl: 'login-modal-template.html'
       });
     })
 
-    .factory('infoModal', function (vModal) {
-      return vModal({
+    .factory('infoModal', function (pureModal) {
+      return pureModal({
         controller: 'InfoController',
         controllerAs: 'infoModal',
         templateUrl: 'info-modal-template.html'
       });
     })
 
-    .factory('loremModal', function (vModal) {
-      return vModal({
+    .factory('loremModal', function (pureModal) {
+      return pureModal({
         controller: 'LoremController',
         controllerAs: 'loremModal',
         templateUrl: 'lorem-modal-template.html'

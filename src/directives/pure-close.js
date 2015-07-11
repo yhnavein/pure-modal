@@ -5,7 +5,7 @@ angular.module('pureModal')
 
 function vCloseDirective () {
   return {
-    restrict: 'E',
+    restrict: 'EA',
     scope: {
       label: '@'
     },

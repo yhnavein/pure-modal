@@ -1,3 +1,8 @@
+.modal.pure-modal {
+  display: block !important;
+  transition: all 0.4s ease-in-out;
+}
+
 pure-modal {
   top: 0;
   left: 0;
@@ -13,6 +18,11 @@ pure-modal {
   pure-close {
     position: absolute;
     top: 0; right: 0;
+    z-index: 10;
+    cursor: pointer;
+    outline: 0;
+
+    &:hover, &:focus { outline: 0; }
   }
 
   pure-dialog {
@@ -27,5 +37,35 @@ pure-modal {
   }
   pure-dialog:focus {
     outline: 0;
+  }
+}
+
+pure-modal.modal-light {
+  pure-close {
+    width: 40px;
+    height: 40px;
+  }
+  pure-close:after, pure-close:before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 12px;
+    height: 1px;
+    width: 16px;
+    transform-origin: 50% 50%;
+  }
+  pure-close:before {
+    transform: rotate(-45deg);
+  }
+  pure-close:after {
+    transform: rotate(45deg);
+  }
+  pure-close:after, pure-close:before {
+    background-color: #2196F3;
+    transition: background-color 0.25s;
+  }
+  pure-close:hover:after, pure-close:hover:before, pure-close:focus:after, pure-close:focus:before {
+    background-color: #F44336;
   }
 }

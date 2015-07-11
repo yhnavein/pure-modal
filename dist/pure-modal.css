@@ -6,6 +6,10 @@
  * @license MIT License, http://www.opensource.org/licenses/MIT
  */
 
+.modal.pure-modal {
+  display: block !important;
+  transition: all 0.4s ease-in-out;
+}
 pure-modal {
   top: 0;
   left: 0;
@@ -22,6 +26,14 @@ pure-modal pure-close {
   position: absolute;
   top: 0;
   right: 0;
+  user-select: none;
+  z-index: 10;
+  cursor: pointer;
+  outline: 0;
+}
+pure-modal pure-close:hover,
+pure-modal pure-close:focus {
+  outline: 0;
 }
 pure-modal pure-dialog {
   display: block;
@@ -35,4 +47,36 @@ pure-modal pure-dialog {
 }
 pure-modal pure-dialog:focus {
   outline: 0;
+}
+pure-modal.modal-light pure-close {
+  width: 40px;
+  height: 40px;
+}
+pure-modal.modal-light pure-close:after,
+pure-modal.modal-light pure-close:before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 12px;
+  height: 1px;
+  width: 16px;
+  transform-origin: 50% 50%;
+}
+pure-modal.modal-light pure-close:before {
+  transform: rotate(-45deg);
+}
+pure-modal.modal-light pure-close:after {
+  transform: rotate(45deg);
+}
+pure-modal.modal-light pure-close:after,
+pure-modal.modal-light pure-close:before {
+  background-color: #2196F3;
+  transition: background-color 0.25s;
+}
+pure-modal.modal-light pure-close:hover:after,
+pure-modal.modal-light pure-close:hover:before,
+pure-modal.modal-light pure-close:focus:after,
+pure-modal.modal-light pure-close:focus:before {
+  background-color: #F44336;
 }

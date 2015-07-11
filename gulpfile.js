@@ -70,5 +70,5 @@ gulp.task('watch', function() {
   gulp.watch('src/**/*.js', ['lint-src', 'scripts']);
   gulp.watch('test/**/*.spec.js', ['lint-tests', 'test']);
 
-  gulp.watch('src/styles/**/*.less', ['styles']);
+  gulp.watch('src/less/**/*.less', ['styles']);
 });
