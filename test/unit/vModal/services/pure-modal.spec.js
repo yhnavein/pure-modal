@@ -1,15 +1,15 @@
-describe('v-modal service', function() {
+describe('pure-modal service', function() {
 
   var container;
-  var vModal;
+  var pureModal;
   var $rootScope;
 
 
 
-  beforeEach(module('vModal'));
+  beforeEach(module('pureModal'));
 
-  beforeEach(inject(function(_vModal_, _$rootScope_, $templateCache) {
-    vModal = _vModal_;
+  beforeEach(inject(function(_pureModal_, _$rootScope_, $templateCache) {
+    pureModal = _pureModal_;
     $rootScope = _$rootScope_;
     $rootScope.greeting = 'こんばんは';
 
@@ -27,7 +27,7 @@ describe('v-modal service', function() {
 
 
   it('should not show a modal initially', function() {
-    var modal = vModal({
+    var modal = pureModal({
       templateUrl: 'test.html',
       container: container
     });
@@ -39,12 +39,12 @@ describe('v-modal service', function() {
 
 
   it('should throw if called without a `template` or `templateUrl` option', function() {
-    expect(function () { vModal({}); }).toThrow();
+    expect(function () { pureModal({}); }).toThrow();
   });
 
 
   it('should throw if called with a text node', function() {
-    var modal = vModal({
+    var modal = pureModal({
       template: 'hey'
     });
     expect(function () {
@@ -56,7 +56,7 @@ describe('v-modal service', function() {
 
   it('should throw if called with both `template` and `templateUrl` options', function() {
     expect(function () {
-      vModal({
+      pureModal({
         template: 'foo',
         templateUrl: 'foo.html'
       });
@@ -65,7 +65,7 @@ describe('v-modal service', function() {
 
 
   it('should show a modal when activated with `templateUrl`', function() {
-    var modal = vModal({
+    var modal = pureModal({
       templateUrl: 'test.html',
       container: container
     });
@@ -77,7 +77,7 @@ describe('v-modal service', function() {
 
 
   it('should show a modal when activated with `template`', function() {
-    var modal = vModal({
+    var modal = pureModal({
       template: '<span>{{greeting}}</span>',
       container: container
     });
@@ -90,7 +90,7 @@ describe('v-modal service', function() {
 
 
   it('should instantiate a controller via the `controller` option', function() {
-    var modal = vModal({
+    var modal = pureModal({
       template: '<span>{{greeting}}</span>',
       controller: function ($scope) {
         $scope.greeting = 'goodnight';
@@ -106,7 +106,7 @@ describe('v-modal service', function() {
 
 
   it('should expose a controller to the scope via the `controllerAs` option', function() {
-    var modal = vModal({
+    var modal = pureModal({
       template: '<span>{{ctrl.greeting}}</span>',
       controller: function () {
         this.greeting = 'boa noite';
@@ -123,7 +123,7 @@ describe('v-modal service', function() {
 
 
   it('should pass locals to the modal scope', function() {
-    var modal = vModal({
+    var modal = pureModal({
       template: '<span>{{greeting}}</span>',
       container: container
     });
@@ -138,7 +138,7 @@ describe('v-modal service', function() {
 
 
   it('should not activate multiple times', function() {
-    var modal = vModal({
+    var modal = pureModal({
       template: '<span>x</span>',
       container: container
     });
@@ -155,7 +155,7 @@ describe('v-modal service', function() {
   it('should resolve a promise after activating', function() {
     var spy = jasmine.createSpy('activated');
 
-    var modal = vModal({
+    var modal = pureModal({
       template: '<span>x</span>',
       container: container
     });

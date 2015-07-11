@@ -1,4 +1,4 @@
-describe('v-modal directive', function () {
+describe('pure-modal directive', function () {
 
   var $compile;
   var scope;
@@ -14,19 +14,19 @@ describe('v-modal directive', function () {
       angular.extend(dafaults, options);
     }
 
-    var template = '<v-modal';
+    var template = '<pure-modal';
         template += (dafaults.closeMethod) ? ' onclose="closeModal()"' : '';
         template += '>';
-        template += (dafaults.closeButton) ? '<v-close></v-close>' : '';
+        template += (dafaults.closeButton) ? '<pure-close></pure-close>' : '';
         template += dafaults.transcludedContent;
-        template += '</v-modal>';
+        template += '</pure-modal>';
 
     return template;
   };
 
 
 
-  beforeEach(module('vModal'));
+  beforeEach(module('pureModal'));
 
   beforeEach(inject(function ($rootScope, _$compile_) {
     scope = $rootScope.$new();
@@ -67,10 +67,10 @@ describe('v-modal directive', function () {
   });
 
 
-  it('should call `closeModal` method when on `v-close` click', function () {
+  it('should call `closeModal` method when on `pure-close` click', function () {
     var template = generateTemplate({ closeMethod: true, closeButton: true });
     var modal = $compile(template)(scope);
-    var vClose = modal.find('v-close');
+    var vClose = modal.find('pure-close');
 
     scope.closeModal = function () {};
     scope.$digest();

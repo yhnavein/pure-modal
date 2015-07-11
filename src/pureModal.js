@@ -1,6 +1,6 @@
 
 // Config
-angular.module('vModal', ['ngAnimate'])
+angular.module('pureModal', ['ngAnimate'])
   .constant('modalConfig', {
     containerSelector: 'body'
   });

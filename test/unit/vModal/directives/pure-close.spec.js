@@ -1,10 +1,10 @@
-describe('v-close directive', function () {
+describe('pure-close directive', function () {
 
   var $compile;
   var scope;
 
 
-  beforeEach(module('vModal'));
+  beforeEach(module('pureModal'));
 
   beforeEach(inject(function ($rootScope, _$compile_) {
     scope = $rootScope.$new();
@@ -19,7 +19,7 @@ describe('v-close directive', function () {
 
   it('should add `arial-label`, `tabindex` and `role` attributes', function () {
     var label = 'Clase';
-    var template = '<v-close label="' + label + '"></v-close>';
+    var template = '<pure-close label="' + label + '"></pure-close>';
     var close = $compile(template)(scope);
 
     expect(close.attr('aria-label')).toBe(label);

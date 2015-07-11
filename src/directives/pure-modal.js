@@ -1,8 +1,6 @@
 
-
-// vModal directive
-angular.module('vModal')
-  .directive('vModal', vModalDirective);
+angular.module('pureModal')
+  .directive('pureModal', vModalDirective);
 
 
 function vModalDirective () {

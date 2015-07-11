@@ -1,4 +1,4 @@
-describe('v-dialog directive', function () {
+describe('pure-dialog directive', function () {
 
   var $compile;
   var scope;
@@ -13,18 +13,18 @@ describe('v-dialog directive', function () {
       angular.extend(dafaults, options);
     }
 
-    var template = '<v-modal>';
-        template += '<v-dialog heading="' + dafaults.heading + '">';
+    var template = '<pure-modal>';
+        template += '<pure-dialog heading="' + dafaults.heading + '">';
         template += dafaults.transcludedContent;
-        template += '</v-dialog>';
-        template += '</v-modal>';
+        template += '</pure-dialog>';
+        template += '</pure-modal>';
 
     return template;
   };
 
 
 
-  beforeEach(module('vModal'));
+  beforeEach(module('pureModal'));
 
   beforeEach(inject(function ($rootScope, _$compile_) {
     scope = $rootScope.$new();
@@ -56,7 +56,7 @@ describe('v-dialog directive', function () {
     template.appendTo($document[0].body)
 
     var modal = $compile(template)(scope);
-    var dialog = modal.find('v-dialog');
+    var dialog = modal.find('pure-dialog');
 
     expect($document[0].activeElement === dialog[0]).toBe(true);
   }));
@@ -67,7 +67,7 @@ describe('v-dialog directive', function () {
 
     var template = generateTemplate({ heading: heading });
     var modal = $compile(template)(scope);
-    var dialog = modal.find('v-dialog');
+    var dialog = modal.find('pure-dialog');
 
     expect(dialog.attr('aria-label')).toBe(heading);
     expect(dialog.attr('role')).toBe('dialog');

@@ -108,20 +108,23 @@
 
     <script  type="text/ng-template" id="lorem-modal-template.html">
 
-      <v-modal class="vModal--default" onclose="loremModal.close()">
-        <v-dialog heading="{{ title }}" large middle>
-          <v-close label="Close"></v-close>
-
-          <h3 class="u-marginBm">
-            {{ title }}
-          </h3>
-
-          <p class="u-marginBm">
-            {{ content }}
-          </p>
-        </v-dialog>
-      </v-modal>
-
+      <div class="modal fade in">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title">{{ title }}</h4>
+            </div>
+            <div class="modal-body">
+              {{ content }}
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </script>
 
 

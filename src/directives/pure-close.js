@@ -1,8 +1,6 @@
 
-
-// vClose directive
-angular.module('vModal')
-  .directive('vClose', vCloseDirective);
+angular.module('pureModal')
+  .directive('pureClose', vCloseDirective);
 
 
 function vCloseDirective () {

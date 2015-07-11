@@ -1,10 +1,10 @@
 /*jslint bitwise: true */
-// vModal service
-'use strict';
-angular.module('vModal')
-.factory('vModal', vModalFactory);
 
-function vModalFactory ($animate, $compile, $rootScope, $controller, $q, $http, $templateCache, $document, modalConfig) {
+'use strict';
+angular.module('pureModal')
+.factory('pureModal', pureModalFactory);
+
+function pureModalFactory ($animate, $compile, $rootScope, $controller, $q, $http, $templateCache, $document, modalConfig) {
   return function modalFactory (config) {
     if (!(!config.template ^ !config.templateUrl)) {
       throw new Error('Expected modal to have exacly one of either `template` or `templateUrl`');
@@ -89,4 +89,4 @@ function vModalFactory ($animate, $compile, $rootScope, $controller, $q, $http, 
   };
 }
 
-vModalFactory.$inject = ['$animate', '$compile', '$rootScope', '$controller', '$q', '$http', '$templateCache', '$document', 'modalConfig'];
+pureModalFactory.$inject = ['$animate', '$compile', '$rootScope', '$controller', '$q', '$http', '$templateCache', '$document', 'modalConfig'];

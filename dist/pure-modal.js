@@ -8,15 +8,13 @@
 
 
 // Config
-angular.module('vModal', ['ngAnimate'])
+angular.module('pureModal', ['ngAnimate'])
   .constant('modalConfig', {
     containerSelector: 'body'
   });
 
-
-// vClose directive
-angular.module('vModal')
-  .directive('vClose', vCloseDirective);
+angular.module('pureModal')
+  .directive('pureClose', vCloseDirective);
 
 
 function vCloseDirective () {
@@ -38,16 +36,14 @@ function vCloseDirective () {
 
 
 
-
-// vDialog directive
-angular.module('vModal')
-  .directive('vDialog', vDialogDirective);
+angular.module('pureModal')
+  .directive('pureDialog', vDialogDirective);
 
 
 function vDialogDirective () {
   return {
     restrict: 'AE',
-    require: '^vModal',
+    require: '^pureModal',
     transclude: true,
     scope: {
       heading: '@',
@@ -72,10 +68,8 @@ function vDialogDirective () {
 }
 
 
-
-// vModal directive
-angular.module('vModal')
-  .directive('vModal', vModalDirective);
+angular.module('pureModal')
+  .directive('pureModal', vModalDirective);
 
 
 function vModalDirective () {
@@ -116,12 +110,12 @@ function vModalDirective () {
 
 
 /*jslint bitwise: true */
-// vModal service
-'use strict';
-angular.module('vModal')
-.factory('vModal', vModalFactory);
 
-function vModalFactory ($animate, $compile, $rootScope, $controller, $q, $http, $templateCache, $document, modalConfig) {
+'use strict';
+angular.module('pureModal')
+.factory('pureModal', pureModalFactory);
+
+function pureModalFactory ($animate, $compile, $rootScope, $controller, $q, $http, $templateCache, $document, modalConfig) {
   return function modalFactory (config) {
     if (!(!config.template ^ !config.templateUrl)) {
       throw new Error('Expected modal to have exacly one of either `template` or `templateUrl`');
@@ -206,4 +200,4 @@ function vModalFactory ($animate, $compile, $rootScope, $controller, $q, $http, 
   };
 }
 
-vModalFactory.$inject = ['$animate', '$compile', '$rootScope', '$controller', '$q', '$http', '$templateCache', '$document', 'modalConfig'];
+pureModalFactory.$inject = ['$animate', '$compile', '$rootScope', '$controller', '$q', '$http', '$templateCache', '$document', 'modalConfig'];

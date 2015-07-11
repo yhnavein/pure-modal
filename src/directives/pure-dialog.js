@@ -1,14 +1,12 @@
 
-
-// vDialog directive
-angular.module('vModal')
-  .directive('vDialog', vDialogDirective);
+angular.module('pureModal')
+  .directive('pureDialog', vDialogDirective);
 
 
 function vDialogDirective () {
   return {
     restrict: 'AE',
-    require: '^vModal',
+    require: '^pureModal',
     transclude: true,
     scope: {
       heading: '@',
