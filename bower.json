@@ -1,6 +1,6 @@
 {
-  "name": "tb-modal",
-  "description": "tbModal - based on vModal - Simple and beautiful modals for AngularJS and Twitter Bootstrap",
+  "name": "pure-modal",
+  "description": "pureModal - based on vModal - Simple and beautiful modals for AngularJS and Twitter Bootstrap",
   "keywords": [
     "AngularJS",
     "dialog",
