@@ -38,34 +38,74 @@ pure-modal {
   pure-dialog:focus {
     outline: 0;
   }
+
+  pure-dialog { max-width: 640px; }
+  @media (min-width: 640px) {
+    pure-dialog { min-width: 640px; }
+  }
+
+  pure-dialog[fit] { width: 100%; }
+
+  pure-dialog[small] { max-width: 380px; }
+  @media (min-width: 380px) {
+    pure-dialog[small] { min-width: 380px; }
+  }
+
+  pure-dialog[large] { max-width: 860px; }
+  @media (min-width: 860px) {
+    pure-dialog[large] { min-width: 860px; }
+  }
 }
 
 pure-modal.modal-light {
+  transition: all 0.4s ease-in-out;
+
+  pure-dialog {
+    padding: 20px;
+    border-radius: 2px;
+  }
+
+  //Close button
   pure-close {
     width: 40px;
     height: 40px;
+
+    &:after, &:before {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 50%;
+      left: 12px;
+      height: 1px;
+      width: 16px;
+      transform-origin: 50% 50%;
+    }
+    &:before {
+      transform: rotate(-45deg);
+    }
+    &:after {
+      transform: rotate(45deg);
+    }
+    &:after, &:before {
+      background-color: #2196F3;
+      transition: background-color 0.25s;
+    }
+    &:hover:after, &:hover:before, &:focus:after, &:focus:before {
+      background-color: #F44336;
+    }
   }
-  pure-close:after, pure-close:before {
-    content: '';
-    display: block;
-    position: absolute;
-    top: 50%;
-    left: 12px;
-    height: 1px;
-    width: 16px;
-    transform-origin: 50% 50%;
+
+  //Animations
+  &.ng-enter {
+    opacity: 0;
   }
-  pure-close:before {
-    transform: rotate(-45deg);
+  &.ng-enter-active {
+    opacity: 1;
   }
-  pure-close:after {
-    transform: rotate(45deg);
+  &.ng-leave {
+    opacity: 1;
   }
-  pure-close:after, pure-close:before {
-    background-color: #2196F3;
-    transition: background-color 0.25s;
-  }
-  pure-close:hover:after, pure-close:hover:before, pure-close:focus:after, pure-close:focus:before {
-    background-color: #F44336;
+  &.ng-leave-active {
+    opacity: 0;
   }
 }

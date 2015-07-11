@@ -1,9 +1,9 @@
 
 angular.module('pureModal')
-  .directive('pureDialog', vDialogDirective);
+  .directive('pureDialog', pureDialogDirective);
 
 
-function vDialogDirective () {
+function pureDialogDirective () {
   return {
     restrict: 'AE',
     require: '^pureModal',
@@ -26,6 +26,10 @@ function vDialogDirective () {
 
       iElement[0].focus();
       setTimeout(function () { iElement[0].focus(); }, 0);
+
+      scope.close = function() {
+        scope.closeMethod();
+      };
     }
   };
 }

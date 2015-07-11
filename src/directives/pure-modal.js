@@ -1,9 +1,9 @@
 
 angular.module('pureModal')
-  .directive('pureModal', vModalDirective);
+  .directive('pureModal', pureModalDirective);
 
 
-function vModalDirective () {
+function pureModalDirective () {
   return {
     restrict: 'AE',
     transclude: true,
@@ -16,7 +16,7 @@ function vModalDirective () {
         iElement.append(clone);
       });
 
-			scope.closeMethod = (angular.isFunction(scope.closeMethod)) ? scope.closeMethod : angular.noop;
+      scope.closeMethod = (angular.isFunction(scope.closeMethod)) ? scope.closeMethod : angular.noop;
 
       function isClose (el) {
         while (el.tagName !== 'PURE-CLOSE') {

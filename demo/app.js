@@ -8,7 +8,7 @@
     ])
 
     .config(function ($compileProvider) {
-      $compileProvider.debugInfoEnabled(false);
+      //$compileProvider.debugInfoEnabled(false);
     })
 
 

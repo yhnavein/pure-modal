@@ -119,7 +119,9 @@
               {{ content }}
             </div>
             <div class="modal-footer">
-              <button pure-close type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-default" ng-click="closeMethod()">
+                Close
+              </button>
               <button type="button" class="btn btn-primary">Save changes</button>
             </div>
           </div>
@@ -131,20 +133,20 @@
     <script type="text/ng-template" id="info-modal-template.html">
 
       <pure-modal class="modal-light">
-        <pure-dialog heading="vModal" middle>
-          <h4 class="u-marginBs">vModal</h4>
+        <pure-dialog heading="Pure Modal">
+          <h4>Pure Modal</h4>
 
           <p>
              Simple, flexible and beautiful modal dialogs in AngularJS.<br>
           </p>
 
           <p>
-            <small>Click on the "Cancel" button to close this dialog.</small>
+            Click on the "Cancel" button to close this dialog.
           </p>
 
-          <div class="u-marginTm">
+          <div>
             <a class="btn btn-primary" href="https://github.com/yhnavein/pure-modal" target="_blank">Fork me on GitHub</a>
-            <button class="btn btn-default" ng-click="infoModal.close()">Cancel</button>
+            <button class="btn btn-default" ng-click="close()">Cancel</button>
           </div>
         </pure-dialog>
       </pure-modal>

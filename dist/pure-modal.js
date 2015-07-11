@@ -14,10 +14,10 @@ angular.module('pureModal', ['ngAnimate'])
   });
 
 angular.module('pureModal')
-  .directive('pureClose', vCloseDirective);
+  .directive('pureClose', pureCloseDirective);
 
 
-function vCloseDirective () {
+function pureCloseDirective () {
   return {
     restrict: 'EA',
     scope: {
@@ -37,10 +37,10 @@ function vCloseDirective () {
 
 
 angular.module('pureModal')
-  .directive('pureDialog', vDialogDirective);
+  .directive('pureDialog', pureDialogDirective);
 
 
-function vDialogDirective () {
+function pureDialogDirective () {
   return {
     restrict: 'AE',
     require: '^pureModal',
@@ -63,16 +63,20 @@ function vDialogDirective () {
 
       iElement[0].focus();
       setTimeout(function () { iElement[0].focus(); }, 0);
+
+      scope.close = function() {
+        scope.closeMethod();
+      };
     }
   };
 }
 
 
 angular.module('pureModal')
-  .directive('pureModal', vModalDirective);
+  .directive('pureModal', pureModalDirective);
 
 
-function vModalDirective () {
+function pureModalDirective () {
   return {
     restrict: 'AE',
     transclude: true,
@@ -85,7 +89,7 @@ function vModalDirective () {
         iElement.append(clone);
       });
 
-			scope.closeMethod = (angular.isFunction(scope.closeMethod)) ? scope.closeMethod : angular.noop;
+      scope.closeMethod = (angular.isFunction(scope.closeMethod)) ? scope.closeMethod : angular.noop;
 
       function isClose (el) {
         while (el.tagName !== 'PURE-CLOSE') {

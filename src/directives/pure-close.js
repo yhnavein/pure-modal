@@ -1,9 +1,9 @@
 
 angular.module('pureModal')
-  .directive('pureClose', vCloseDirective);
+  .directive('pureClose', pureCloseDirective);
 
 
-function vCloseDirective () {
+function pureCloseDirective () {
   return {
     restrict: 'EA',
     scope: {
