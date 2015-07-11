@@ -88,7 +88,7 @@ function vModalDirective () {
 			scope.closeMethod = (angular.isFunction(scope.closeMethod)) ? scope.closeMethod : angular.noop;
 
       function isClose (el) {
-        while (el.tagName !== 'V-CLOSE') {
+        while (el.tagName !== 'PURE-CLOSE') {
           el = el.parentNode;
           if (!el) {
             return false;
@@ -98,7 +98,7 @@ function vModalDirective () {
       }
 
       iElement.on('click', function (event) {
-        var isBackdrop = (event.target.tagName === 'V-MODAL');
+        var isBackdrop = (event.target.tagName === 'PURE-MODAL');
 
         if (isBackdrop || isClose(event.target)) {
           scope.$apply(function () { scope.closeMethod(); });
