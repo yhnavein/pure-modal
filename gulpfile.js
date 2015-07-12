@@ -14,6 +14,7 @@ var gulp = require('gulp'),
     jshint = require('gulp-jshint'),
     concat = require('gulp-concat'),
     uglify = require('gulp-uglify'),
+    replace = require('gulp-replace'),
     rename = require('gulp-rename'),
     less = require('gulp-less'),
     minifycss = require('gulp-minify-css'),
@@ -25,6 +26,7 @@ gulp.task('scripts', function() {
       'src/directives/*.js',
       'src/services/*.js'
     ])
+    .pipe(replace(/'use strict';/g, ''))
     .pipe(concat('pure-modal.js'))
     .pipe(header(banner, { pkg: pkg } ))
     .pipe(gulp.dest('./dist/'))

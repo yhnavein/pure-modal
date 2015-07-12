@@ -7,12 +7,12 @@
  */
 
 
-'use strict';
+
 angular.module('pureModal', ['ngAnimate'])
   .constant('modalConfig', {
     containerSelector: 'body'
   });
-'use strict';
+
 angular.module('pureModal')
   .directive('pureClose', pureCloseDirective);
 
@@ -35,7 +35,7 @@ function pureCloseDirective () {
 }
 
 
-'use strict';
+
 angular.module('pureModal')
   .directive('pureDialog', pureDialogDirective);
 
@@ -71,7 +71,7 @@ function pureDialogDirective () {
   };
 }
 
-'use strict';
+
 angular.module('pureModal')
   .directive('pureModal', pureModalDirective);
 
@@ -115,7 +115,7 @@ function pureModalDirective () {
 
 /*jslint bitwise: true */
 
-'use strict';
+
 angular.module('pureModal')
 .factory('pureModal', pureModalFactory);
 
