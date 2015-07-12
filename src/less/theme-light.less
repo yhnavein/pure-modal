@@ -1,0 +1,51 @@
+pure-modal.modal-light {
+  transition: opacity 0.4s ease-in-out;
+
+  pure-dialog {
+    box-shadow: 0 0 12px rgba(0,0,0,.6);
+  }
+
+  //Close button
+  pure-close {
+    width: 40px;
+    height: 40px;
+
+    &:after, &:before {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 50%;
+      left: 12px;
+      height: 1px;
+      width: 16px;
+      transform-origin: 50% 50%;
+    }
+    &:before {
+      transform: rotate(-45deg);
+    }
+    &:after {
+      transform: rotate(45deg);
+    }
+    &:after, &:before {
+      background-color: #2196F3;
+      transition: background-color 0.25s;
+    }
+    &:hover:after, &:hover:before, &:focus:after, &:focus:before {
+      background-color: #F44336;
+    }
+  }
+
+  //Animations
+  &.ng-enter {
+    opacity: 0;
+  }
+  &.ng-enter-active {
+    opacity: 1;
+  }
+  &.ng-leave {
+    opacity: 1;
+  }
+  &.ng-leave-active {
+    opacity: 0;
+  }
+}

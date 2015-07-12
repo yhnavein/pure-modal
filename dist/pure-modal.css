@@ -43,6 +43,8 @@ pure-modal pure-dialog {
   min-width: 240px;
   outline: 0;
   margin: 0 auto;
+  padding: 20px;
+  border-radius: 2px;
 }
 pure-modal pure-dialog:focus {
   outline: 0;
@@ -75,11 +77,10 @@ pure-modal pure-dialog[large] {
   }
 }
 pure-modal.modal-light {
-  transition: all 0.4s ease-in-out;
+  transition: opacity 0.4s ease-in-out;
 }
 pure-modal.modal-light pure-dialog {
-  padding: 20px;
-  border-radius: 2px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.6);
 }
 pure-modal.modal-light pure-close {
   width: 40px;
@@ -123,5 +124,57 @@ pure-modal.modal-light.ng-leave {
   opacity: 1;
 }
 pure-modal.modal-light.ng-leave-active {
+  opacity: 0;
+}
+pure-modal.modal-dark {
+  transition: opacity 0.4s ease-in-out;
+}
+pure-modal.modal-dark pure-dialog {
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.6);
+  border: 1px solid #111;
+  background: #211f21;
+}
+pure-modal.modal-dark pure-close {
+  width: 40px;
+  height: 40px;
+}
+pure-modal.modal-dark pure-close:after,
+pure-modal.modal-dark pure-close:before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 12px;
+  height: 1px;
+  width: 16px;
+  transform-origin: 50% 50%;
+}
+pure-modal.modal-dark pure-close:before {
+  transform: rotate(-45deg);
+}
+pure-modal.modal-dark pure-close:after {
+  transform: rotate(45deg);
+}
+pure-modal.modal-dark pure-close:after,
+pure-modal.modal-dark pure-close:before {
+  background-color: #2196F3;
+  transition: background-color 0.25s;
+}
+pure-modal.modal-dark pure-close:hover:after,
+pure-modal.modal-dark pure-close:hover:before,
+pure-modal.modal-dark pure-close:focus:after,
+pure-modal.modal-dark pure-close:focus:before {
+  background-color: #F44336;
+}
+pure-modal.modal-dark.ng-enter {
+  opacity: 0;
+}
+pure-modal.modal-dark.ng-enter-active {
+  opacity: 1;
+}
+pure-modal.modal-dark.ng-leave {
+  opacity: 1;
+}
+pure-modal.modal-dark.ng-leave-active {
   opacity: 0;
 }

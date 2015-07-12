@@ -34,10 +34,12 @@ pure-modal {
     min-width: 240px;
     outline: 0;
     margin: 0 auto;
+    padding: 20px;
+    border-radius: 2px;
+
+    &:focus { outline: 0; }
   }
-  pure-dialog:focus {
-    outline: 0;
-  }
+
 
   pure-dialog { max-width: 640px; }
   @media (min-width: 640px) {
@@ -54,58 +56,5 @@ pure-modal {
   pure-dialog[large] { max-width: 860px; }
   @media (min-width: 860px) {
     pure-dialog[large] { min-width: 860px; }
-  }
-}
-
-pure-modal.modal-light {
-  transition: all 0.4s ease-in-out;
-
-  pure-dialog {
-    padding: 20px;
-    border-radius: 2px;
-  }
-
-  //Close button
-  pure-close {
-    width: 40px;
-    height: 40px;
-
-    &:after, &:before {
-      content: '';
-      display: block;
-      position: absolute;
-      top: 50%;
-      left: 12px;
-      height: 1px;
-      width: 16px;
-      transform-origin: 50% 50%;
-    }
-    &:before {
-      transform: rotate(-45deg);
-    }
-    &:after {
-      transform: rotate(45deg);
-    }
-    &:after, &:before {
-      background-color: #2196F3;
-      transition: background-color 0.25s;
-    }
-    &:hover:after, &:hover:before, &:focus:after, &:focus:before {
-      background-color: #F44336;
-    }
-  }
-
-  //Animations
-  &.ng-enter {
-    opacity: 0;
-  }
-  &.ng-enter-active {
-    opacity: 1;
-  }
-  &.ng-leave {
-    opacity: 1;
-  }
-  &.ng-leave-active {
-    opacity: 0;
   }
 }
