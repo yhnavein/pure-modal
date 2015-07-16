@@ -12,7 +12,7 @@ function pureModalDirective () {
     },
     controller: function () {},
     link: function (scope, iElement, iAttrs, ctrl, transclude) {
-      transclude(scope.$parent, function(clone) {
+      transclude(scope.$parent, function(clone, scope) {
         iElement.append(clone);
       });
 

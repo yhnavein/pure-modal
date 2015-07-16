@@ -34,12 +34,28 @@ pure-modal {
     min-width: 240px;
     outline: 0;
     margin: 0 auto;
-    padding: 20px;
+    padding: 0;
     border-radius: 2px;
 
     &:focus { outline: 0; }
+
+    .pure-header {
+      padding: 10px 20px;
+      border-bottom: 1px solid transparent;
+
+      h3 { margin: 4px 0; }
+    }
+    .pure-body { padding: 10px 20px; }
+    .pure-controls {
+      padding: 15px 20px;
+      border-top: 1px solid transparent;
+      text-align: right;
+    }
   }
 
+  pure-dialog[simple] {
+    padding: 20px;
+  }
 
   pure-dialog { max-width: 640px; }
   @media (min-width: 640px) {

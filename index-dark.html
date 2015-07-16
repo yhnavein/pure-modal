@@ -43,6 +43,7 @@
 
       <div class="">
         <button class="btn btn-primary" ng-click="mainCtrl.openLoginModal()">Modal 1</button>
+        <button class="btn btn-primary" ng-click="mainCtrl.openLoginAdvModal()">Modal 1.5</button>
         <button class="btn btn-primary" ng-click="mainCtrl.openLoremModal()">Modal 2</button>
         <button class="btn btn-primary" ng-click="mainCtrl.openInfoModal()">Modal 3</button>
       </div>
@@ -69,7 +70,7 @@
     <script type="text/ng-template" id="login-modal-template.html">
 
       <pure-modal class="modal-light" onclose="loginModal.close()">
-        <pure-dialog heading="Account Login" small>
+        <pure-dialog heading="Account Login" small simple>
           <pure-close label="Close"></pure-close>
 
           <form name="loginForm">
@@ -98,6 +99,44 @@
             <button class="btn btn-primary">Login</button>
           </div>
 
+        </pure-dialog>
+      </pure-modal>
+
+    </script>
+
+    <script type="text/ng-template" id="login-adv-template.html">
+
+      <pure-modal class="modal-dark" onclose="loginModal.close()">
+        <pure-dialog heading="Account Login" small>
+          <div class="pure-header">
+            <h3>Account Login</h3>
+            <pure-close label="Close"></pure-close>
+          </div>
+          <div class="pure-body">
+            <form name="loginForm">
+              <div class="form-group">
+                <label for="emailInput">Email</label>
+                <input class="form-control" ng-model="model.email" type="email" id="emailInput" name="email" placeholder="hi@yourdomain.com">
+              </div>
+
+              <div class="form-group">
+                <label for="passwordInput">Password</label>
+                <input class="form-control" ng-model="model.password" type="password" id="passwordInput" name="password" placeholder="••••••">
+              </div>
+
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" ng-model="model.rememberMe" ng-checked="true" name="rememberMe"> Check me out
+                </label>
+              </div>
+            </form>
+          </div>
+
+          <div class="pure-controls">
+            <button class="btn btn-default">Create Account</button>
+            <small class="muted">or</small>
+            <button class="btn btn-primary">Login</button>
+          </div>
         </pure-dialog>
       </pure-modal>
 

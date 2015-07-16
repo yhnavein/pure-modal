@@ -50,7 +50,7 @@ function pureDialogDirective () {
       role: '@'
     },
     link: function (scope, iElement, iAttrs, modalCtrl, transclude) {
-      transclude(scope.$parent, function(clone) {
+      transclude(scope.$parent, function(clone, scope) {
         iElement.append(clone);
       });
 
@@ -85,7 +85,7 @@ function pureModalDirective () {
     },
     controller: function () {},
     link: function (scope, iElement, iAttrs, ctrl, transclude) {
-      transclude(scope.$parent, function(clone) {
+      transclude(scope.$parent, function(clone, scope) {
         iElement.append(clone);
       });
 

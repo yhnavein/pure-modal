@@ -20,6 +20,14 @@
       });
     })
 
+    .factory('loginAdvModal', function (pureModal) {
+      return pureModal({
+        controller: 'LoginController',
+        controllerAs: 'loginModal',
+        templateUrl: 'login-adv-template.html'
+      });
+    })
+
     .factory('infoModal', function (pureModal) {
       return pureModal({
         controller: 'InfoController',
@@ -56,7 +64,7 @@
     })
 
 
-    .controller('MainController', function (loginModal, infoModal, loremModal) {
+    .controller('MainController', function (loginModal, infoModal, loremModal, loginAdvModal) {
       var ctrl = this;
 
       var lorem = {
@@ -65,6 +73,7 @@
       };
 
       ctrl.openLoginModal = loginModal.activate;
+      ctrl.openLoginAdvModal = loginAdvModal.activate;
       ctrl.openInfoModal = infoModal.activate;
 
       // Add params to the modal $scope
