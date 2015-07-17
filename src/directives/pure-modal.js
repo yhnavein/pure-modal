@@ -7,14 +7,15 @@ function pureModalDirective () {
   return {
     restrict: 'AE',
     transclude: true,
+    template: '<div ng-transclude></div>',
     scope: {
       closeMethod: '&?onclose'
     },
     controller: function () {},
     link: function (scope, iElement, iAttrs, ctrl, transclude) {
-      transclude(scope.$parent, function(clone, scope) {
-        iElement.append(clone);
-      });
+      // transclude(scope.$parent, function(clone, scope) {
+      //   iElement.append(clone);
+      // });
 
       scope.closeMethod = (angular.isFunction(scope.closeMethod)) ? scope.closeMethod : angular.noop;
 

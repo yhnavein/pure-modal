@@ -1,85 +1,35 @@
-(function (angular) {
-  'use strict';
+'use strict';
 
-  angular.module('myApp',
-    [
-      'ngAnimate',
-      'pureModal'
-    ])
+angular.module('myApp', [ 'ngAnimate', 'pureModal' ])
 
-    .config(function ($compileProvider) {
-      //$compileProvider.debugInfoEnabled(false);
-    })
+  .config(function ($compileProvider) {
+    //$compileProvider.debugInfoEnabled(false);
+  })
 
-
-    .factory('loginModal', function (pureModal) {
-      return pureModal({
-        controller: 'LoginController',
-        controllerAs: 'loginModal',
-        templateUrl: 'login-modal-template.html'
-      });
-    })
-
-    .factory('loginAdvModal', function (pureModal) {
-      return pureModal({
-        controller: 'LoginController',
-        controllerAs: 'loginModal',
-        templateUrl: 'login-adv-template.html'
-      });
-    })
-
-    .factory('infoModal', function (pureModal) {
-      return pureModal({
-        controller: 'InfoController',
-        controllerAs: 'infoModal',
-        templateUrl: 'info-modal-template.html'
-      });
-    })
-
-    .factory('loremModal', function (pureModal) {
-      return pureModal({
-        controller: 'LoremController',
-        controllerAs: 'loremModal',
-        templateUrl: 'lorem-modal-template.html'
-      });
-    })
-
-
-    .controller('LoginController', function ($scope, loginModal) {
-      var ctrl = this;
-
-      ctrl.close = loginModal.deactivate;
-    })
-
-    .controller('LoremController', function ($scope, loremModal) {
-      var ctrl = this;
-
-      ctrl.close = loremModal.deactivate;
-    })
-
-    .controller('InfoController', function ($scope, infoModal) {
-      var ctrl = this;
-
-      ctrl.close = infoModal.deactivate;
-    })
-
-
-    .controller('MainController', function (loginModal, infoModal, loremModal, loginAdvModal) {
-      var ctrl = this;
-
-      var lorem = {
-        title: 'Lorem ipsum',
-        content: 'Etiam ullamcorper. Suspendisse a pellentesque dui, non felis. Maecenas malesuada elit lectus felis, malesuada ultricies. Curabitur et ligula. Ut molestie a, ultricies porta urna. Vestibulum commodo volutpat a, convallis ac, laoreet enim. Phasellus fermentum in, dolor. Pellentesque facilisis. Nulla imperdiet sit amet magna. Vestibulum dapibus, mauris nec malesuada fames ac turpis velit, rhoncus eu, luctus et interdum adipiscing wisi. Aliquam erat ac ipsum. Integer aliquam purus. Quisque lorem tortor fringilla sed, vestibulum id, eleifend justo vel bibendum sapien massa ac turpis faucibus orci luctus non, consectetuer lobortis quis, varius in, purus. Integer ultrices posuere cubilia Curae, Nulla ipsum dolor lacus, suscipit adipiscing. Cum sociis natoque penatibus et ultrices volutpat. Nullam wisi ultricies a, gravida vitae, dapibus risus ante sodales lectus blandit eu, tempor diam pede cursus vitae, ultricies eu, faucibus quis, porttitor eros cursus lectus, pellentesque eget, bibendum a, gravida ullamcorper quam. Nullam viverra consectetuer. Quisque cursus et, porttitor risus. Aliquam sem. In hendrerit nulla quam nunc, accumsan congue.'
-      };
-
-      ctrl.openLoginModal = loginModal.activate;
-      ctrl.openLoginAdvModal = loginAdvModal.activate;
-      ctrl.openInfoModal = infoModal.activate;
-
-      // Add params to the modal $scope
-      ctrl.openLoremModal = function () {
-        loremModal.activate(lorem);
-      };
+  .factory('infoModal', function (pureModal) {
+    return pureModal({
+      controller: 'InfoController',
+      controllerAs: 'infoModal',
+      templateUrl: 'info-modal-template.html'
     });
+  })
 
-})(angular);
+  .factory('loremModal', function (pureModal) {
+    return pureModal({
+      controller: 'LoremController',
+      controllerAs: 'loremModal',
+      templateUrl: 'lorem-modal-template.html'
+    });
+  })
+
+  .controller('LoremController', function ($scope, loremModal) {
+    var ctrl = this;
+
+    ctrl.close = loremModal.deactivate;
+  })
+
+  .controller('InfoController', function ($scope, infoModal) {
+    var ctrl = this;
+
+    ctrl.close = infoModal.deactivate;
+  });

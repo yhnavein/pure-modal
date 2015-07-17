@@ -8,14 +8,15 @@ function pureDialogDirective () {
     restrict: 'AE',
     require: '^pureModal',
     transclude: true,
+    template: '<div ng-transclude></div>',
     scope: {
       heading: '@',
       role: '@'
     },
     link: function (scope, iElement, iAttrs, modalCtrl, transclude) {
-      transclude(scope.$parent, function(clone, scope) {
-        iElement.append(clone);
-      });
+      // transclude(scope.$parent, function(clone, scope) {
+      //   iElement.append(clone);
+      // });
 
       if (scope.heading) {
         iAttrs.$set('aria-label', scope.heading);

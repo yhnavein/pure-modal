@@ -84,6 +84,8 @@ function pureModalFactory ($animate, $compile, $rootScope, $controller, $q, $htt
     return {
       activate: activate,
       deactivate: deactivate,
+      open: activate,
+      close: deactivate,
       active: active
     };
   };

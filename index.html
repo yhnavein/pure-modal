@@ -23,6 +23,10 @@
 
     <script src="./dist/pure-modal.js"></script>
     <script src="./demo/app.js"></script>
+    <script src="./demo/modals/loginModal.js"></script>
+    <script src="./demo/modals/advLoginModal.js"></script>
+    <script src="./demo/modals/bootstrapModal.js"></script>
+    <script src="./demo/demoCtrl.js"></script>
 
   </head>
 
@@ -36,13 +40,12 @@
       <p class="lead">Simple and beautiful modals for <b>AngularJS</b> and <b>Twitter Bootstrap</b></p>
     </div>
 
-    <div class="container" ng-controller="MainController as mainCtrl">
+    <div class="container" ng-controller="DemoController as mainCtrl">
 
       <div>
-        <button class="btn btn-primary" ng-click="mainCtrl.openLoginModal()">Modal 1</button>
-        <button class="btn btn-primary" ng-click="mainCtrl.openLoginAdvModal()">Modal 1.5</button>
-        <button class="btn btn-primary" ng-click="mainCtrl.openLoremModal()">Modal 2</button>
-        <button class="btn btn-primary" ng-click="mainCtrl.openInfoModal()">Modal 3</button>
+        <button class="btn btn-primary" ng-click="mainCtrl.openLoginModal()">Really Simple Modal</button>
+        <button class="btn btn-primary" ng-click="mainCtrl.openLoginAdvModal()">Login Modal</button>
+        <button class="btn btn-primary" ng-click="mainCtrl.openBootstrapModal()">Bootstrap Modal</button>
       </div>
 
     </div>
@@ -52,7 +55,7 @@
         <div class="logo-container">
           <div class="logo-img"></div>
         </div>
-        <a href="https://github.com/yhnavein" class="u-inlineBlock u-linkClean">
+        <a href="https://github.com/yhnavein">
           <small>
             By PureDev Piotr Dąbrowski
           </small>
@@ -60,161 +63,9 @@
       </div>
     </footer>
 
-
-    <script type="text/ng-template" id="login-modal-template.html">
-
-      <pure-modal class="modal-light" onclose="loginModal.close()">
-        <pure-dialog heading="Account Login" small simple>
-          <pure-close label="Close"></pure-close>
-
-          <form name="loginForm">
-            <div class="form-group">
-              <label for="emailInput">Email</label>
-              <input class="form-control" ng-model="model.email" type="email" id="emailInput" name="email" placeholder="hi@yourdomain.com">
-            </div>
-
-            <div class="form-group">
-              <label for="passwordInput">Password</label>
-              <input class="form-control" ng-model="model.password" type="password" id="passwordInput" name="password" placeholder="••••••">
-            </div>
-
-            <div class="checkbox">
-              <label>
-                <input type="checkbox" ng-model="model.rememberMe" ng-checked="true" name="rememberMe"> Check me out
-              </label>
-            </div>
-          </form>
-
-          <hr>
-
-          <div class="modal-controls">
-            <button class="btn btn-default">Create Account</button>
-            <small class="muted">or</small>
-            <button class="btn btn-primary">Login</button>
-          </div>
-
-        </pure-dialog>
-      </pure-modal>
-
-    </script>
-
-    <script type="text/ng-template" id="login-adv-template.html">
-
-      <pure-modal class="modal-light" onclose="loginModal.close()">
-        <pure-dialog heading="Account Login" small>
-          <div class="pure-header">
-            <h3>Account Login</h3>
-            <pure-close label="Close"></pure-close>
-          </div>
-          <div class="pure-body">
-            <form name="loginForm">
-              <div class="form-group">
-                <label for="emailInput">Email</label>
-                <input class="form-control" ng-model="model.email" type="email" id="emailInput" name="email" placeholder="hi@yourdomain.com">
-              </div>
-
-              <div class="form-group">
-                <label for="passwordInput">Password</label>
-                <input class="form-control" ng-model="model.password" type="password" id="passwordInput" name="password" placeholder="••••••">
-              </div>
-
-              <div class="checkbox">
-                <label>
-                  <input type="checkbox" ng-model="model.rememberMe" ng-checked="true" name="rememberMe"> Check me out
-                </label>
-              </div>
-            </form>
-          </div>
-
-          <div class="pure-controls">
-            <button class="btn btn-default">Create Account</button>
-            <small class="muted">or</small>
-            <button class="btn btn-primary">Login</button>
-          </div>
-        </pure-dialog>
-      </pure-modal>
-
-    </script>
-
-
-    <script  type="text/ng-template" id="lorem-modal-template.html">
-
-      <div class="modal pure-modal modal-light">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <pure-close label="Close"></pure-close>
-              <h4 class="modal-title">{{ title }}</h4>
-            </div>
-            <div class="modal-body">
-              {{ content }}
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default" ng-click="closeMethod()">
-                Close
-              </button>
-              <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </script>
-
-
-    <script type="text/ng-template" id="info-modal-template.html">
-
-      <pure-modal class="modal-light">
-        <pure-dialog heading="Pure Modal">
-          <div class="pure-modal-header">
-            <h3>Pure Modal</h3>
-          </div>
-          <div class="pure-modal-body">
-            <p>
-              Simple, flexible and beautiful modal dialogs in AngularJS.<br>
-            </p>
-
-            <p>
-              Click on the "Cancel" button to close this dialog.
-            </p>
-          </div>
-          <div class="pure-modal-controls">
-            <a class="btn btn-primary" href="https://github.com/yhnavein/pure-modal" target="_blank">Fork me on GitHub</a>
-            <button class="btn btn-default" ng-click="close()">Cancel</button>
-          </div>
-        </pure-dialog>
-      </pure-modal>
-
-    </script>
-
-    <script type="text/ng-template" id="info-modal-template2.html">
-
-      <pure-modal class="modal-light">
-        <pure-dialog heading="Pure Modal">
-          <!--<dialog-header>Pure Modal</dialog-header>-->
-
-          <p>
-             Simple, flexible and beautiful modal dialogs in AngularJS.<br>
-          </p>
-
-          <p>
-            Click on the "Cancel" button to close this dialog.
-          </p>
-
-          <div>
-            <a class="btn btn-primary" href="https://github.com/yhnavein/pure-modal" target="_blank">Fork me on GitHub</a>
-            <button class="btn btn-default" ng-click="close()">Cancel</button>
-          </div>
-        </pure-dialog>
-      </pure-modal>
-
-    </script>
-
-
     <!-- Fork me on GitHub ribbon -->
     <a href="https://github.com/yhnavein/pure-modal">
-      <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png">
+      <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png">
     </a>
-
-
   </body>
 </html>
