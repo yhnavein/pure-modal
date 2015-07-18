@@ -1,9 +1,6 @@
 'use strict';
 angular.module('pureModal')
-  .directive('pureClose', pureCloseDirective);
-
-
-function pureCloseDirective () {
+.directive('pureClose', function pureCloseDirective () {
   return {
     restrict: 'EA',
     scope: {
@@ -18,5 +15,4 @@ function pureCloseDirective () {
       iAttrs.$set('tabindex', 0);
     }
   };
-}
-
+});

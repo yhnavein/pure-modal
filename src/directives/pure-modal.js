@@ -1,9 +1,6 @@
 'use strict';
 angular.module('pureModal')
-  .directive('pureModal', pureModalDirective);
-
-
-function pureModalDirective () {
+.directive('pureModal', function pureModalDirective () {
   return {
     restrict: 'AE',
     transclude: true,
@@ -38,5 +35,4 @@ function pureModalDirective () {
       });
     }
   };
-}
-
+});

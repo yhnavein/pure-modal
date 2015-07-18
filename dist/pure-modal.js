@@ -14,10 +14,7 @@ angular.module('pureModal', ['ngAnimate'])
   });
 
 angular.module('pureModal')
-  .directive('pureClose', pureCloseDirective);
-
-
-function pureCloseDirective () {
+.directive('pureClose', function pureCloseDirective () {
   return {
     restrict: 'EA',
     scope: {
@@ -32,15 +29,10 @@ function pureCloseDirective () {
       iAttrs.$set('tabindex', 0);
     }
   };
-}
-
-
+});
 
 angular.module('pureModal')
-  .directive('pureDialog', pureDialogDirective);
-
-
-function pureDialogDirective () {
+.directive('pureDialog', function pureDialogDirective () {
   return {
     restrict: 'AE',
     require: '^pureModal',
@@ -70,14 +62,12 @@ function pureDialogDirective () {
       };
     }
   };
-}
+});
+
 
 
 angular.module('pureModal')
-  .directive('pureModal', pureModalDirective);
-
-
-function pureModalDirective () {
+.directive('pureModal', function pureModalDirective () {
   return {
     restrict: 'AE',
     transclude: true,
@@ -112,15 +102,12 @@ function pureModalDirective () {
       });
     }
   };
-}
-
-
+});
 /*jslint bitwise: true */
 
 
 angular.module('pureModal')
-.factory('pureModal', pureModalFactory);
-
+.factory('pureModal', ['$animate', '$compile', '$rootScope', '$controller', '$q', '$http', '$templateCache', '$document', 'modalConfig',
 function pureModalFactory ($animate, $compile, $rootScope, $controller, $q, $http, $templateCache, $document, modalConfig) {
   return function modalFactory (config) {
     if (!(!config.template ^ !config.templateUrl)) {
@@ -206,6 +193,4 @@ function pureModalFactory ($animate, $compile, $rootScope, $controller, $q, $htt
       active: active
     };
   };
-}
-
-pureModalFactory.$inject = ['$animate', '$compile', '$rootScope', '$controller', '$q', '$http', '$templateCache', '$document', 'modalConfig'];
+}]);

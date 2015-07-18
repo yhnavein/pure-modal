@@ -2,8 +2,7 @@
 
 'use strict';
 angular.module('pureModal')
-.factory('pureModal', pureModalFactory);
-
+.factory('pureModal', ['$animate', '$compile', '$rootScope', '$controller', '$q', '$http', '$templateCache', '$document', 'modalConfig',
 function pureModalFactory ($animate, $compile, $rootScope, $controller, $q, $http, $templateCache, $document, modalConfig) {
   return function modalFactory (config) {
     if (!(!config.template ^ !config.templateUrl)) {
@@ -89,6 +88,4 @@ function pureModalFactory ($animate, $compile, $rootScope, $controller, $q, $htt
       active: active
     };
   };
-}
-
-pureModalFactory.$inject = ['$animate', '$compile', '$rootScope', '$controller', '$q', '$http', '$templateCache', '$document', 'modalConfig'];
+}]);

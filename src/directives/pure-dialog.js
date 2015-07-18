@@ -1,9 +1,6 @@
 'use strict';
 angular.module('pureModal')
-  .directive('pureDialog', pureDialogDirective);
-
-
-function pureDialogDirective () {
+.directive('pureDialog', function pureDialogDirective () {
   return {
     restrict: 'AE',
     require: '^pureModal',
@@ -33,4 +30,5 @@ function pureDialogDirective () {
       };
     }
   };
-}
+});
+
