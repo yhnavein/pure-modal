@@ -18,6 +18,7 @@ var gulp = require('gulp'),
     rename = require('gulp-rename'),
     less = require('gulp-less'),
     minifycss = require('gulp-minify-css'),
+    ghPages = require('gulp-gh-pages'),
     header = require('gulp-header');
 
 gulp.task('scripts', function() {
@@ -52,6 +53,11 @@ gulp.task('test', function (done) {
     configFile: __dirname + '/test/karma.conf.js',
     singleRun: true
   }, done);
+});
+
+gulp.task('deploy-pages', function (done) {
+  return gulp.src(['./dist/*', './demo/**/*', 'index.html'])
+    .pipe(ghPages());
 });
 
 gulp.task('lint-src', function() {

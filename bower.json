@@ -9,15 +9,18 @@
     "window",
     "component",
     "directive",
-    "module"
+    "twitter",
+    "bootstrap"
   ],
   "authors": [
     "Piotrek Dąbrowski <admin@puredev.eu>",
     "Łukasz Wątroba <l@lukaszwatroba.com>"
   ],
   "main": [
-    "dist/v-modal.js",
-    "dist/v-modal.css"
+    "dist/pure-modal.js",
+    "dist/pure-modal.min.js",
+    "dist/pure-modal.css",
+    "dist/pure-modal.min.css"
   ],
   "dependencies": {
     "angular": "~1.4.0",
