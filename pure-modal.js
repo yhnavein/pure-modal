@@ -1,45 +1,22 @@
 /**
- * vModal - Simple, flexible and beautiful modal dialogs in AngularJS
+ * pureModal - based on vModal - Simple and beautiful modals for AngularJS and Twitter Bootstrap
  * @version v1.3.2
- * @link http://lukaszwatroba.github.io/v-modal
- * @author Łukasz Wątroba <l@lukaszwatroba.com>
+ * @link http://yhnavein.github.io/pure-modal
+ * @author Piotrek Dąbrowski <admin@puredev.eu>
  * @license MIT License, http://www.opensource.org/licenses/MIT
  */
 
-(function (angular) {
-'use strict';
 
 
-
-// Config
-angular.module('vModal.config', [])
+angular.module('pureModal', ['ngAnimate'])
   .constant('modalConfig', {
     containerSelector: 'body'
   });
 
-
-// Modules
-angular.module('vModal.directives', []);
-angular.module('vModal.services', []);
-angular.module('vModal',
-  [
-    'ngAnimate',
-
-    'vModal.config',
-    'vModal.directives',
-    'vModal.services'
-  ]);
-
-
-
-// vClose directive
-angular.module('vModal.directives')
-  .directive('vClose', vCloseDirective);
-
-
-function vCloseDirective () {
+angular.module('pureModal')
+.directive('pureClose', function pureCloseDirective () {
   return {
-    restrict: 'E',
+    restrict: 'EA',
     scope: {
       label: '@'
     },
@@ -52,29 +29,23 @@ function vCloseDirective () {
       iAttrs.$set('tabindex', 0);
     }
   };
-}
+});
 
-
-
-
-// vDialog directive
-angular.module('vModal.directives')
-  .directive('vDialog', vDialogDirective);
-
-
-function vDialogDirective () {
+angular.module('pureModal')
+.directive('pureDialog', function pureDialogDirective () {
   return {
     restrict: 'AE',
-    require: '^vModal',
+    require: '^pureModal',
     transclude: true,
+    template: '<div ng-transclude></div>',
     scope: {
       heading: '@',
       role: '@'
     },
     link: function (scope, iElement, iAttrs, modalCtrl, transclude) {
-      transclude(scope.$parent, function(clone) {
-        iElement.append(clone);
-      });
+      // transclude(scope.$parent, function(clone, scope) {
+      //   iElement.append(clone);
+      // });
 
       if (scope.heading) {
         iAttrs.$set('aria-label', scope.heading);
@@ -85,34 +56,35 @@ function vDialogDirective () {
 
       iElement[0].focus();
       setTimeout(function () { iElement[0].focus(); }, 0);
+
+      scope.close = function() {
+        scope.closeMethod();
+      };
     }
   };
-}
+});
 
 
 
-// vModal directive
-angular.module('vModal.directives')
-  .directive('vModal', vModalDirective);
-
-
-function vModalDirective () {
+angular.module('pureModal')
+.directive('pureModal', function pureModalDirective () {
   return {
     restrict: 'AE',
     transclude: true,
+    template: '<div ng-transclude></div>',
     scope: {
       closeMethod: '&?onclose'
     },
     controller: function () {},
     link: function (scope, iElement, iAttrs, ctrl, transclude) {
-      transclude(scope.$parent, function(clone) {
-        iElement.append(clone);
-      });
-			
-			scope.closeMethod = (angular.isFunction(scope.closeMethod)) ? scope.closeMethod : angular.noop;
+      // transclude(scope.$parent, function(clone, scope) {
+      //   iElement.append(clone);
+      // });
+
+      scope.closeMethod = (angular.isFunction(scope.closeMethod)) ? scope.closeMethod : angular.noop;
 
       function isClose (el) {
-        while (el.tagName !== 'V-CLOSE') {
+        while (el.tagName !== 'PURE-CLOSE') {
           el = el.parentNode;
           if (!el) {
             return false;
@@ -122,7 +94,7 @@ function vModalDirective () {
       }
 
       iElement.on('click', function (event) {
-        var isBackdrop = (event.target.tagName === 'V-MODAL');
+        var isBackdrop = (event.target.tagName === 'PURE-MODAL');
 
         if (isBackdrop || isClose(event.target)) {
           scope.$apply(function () { scope.closeMethod(); });
@@ -130,31 +102,22 @@ function vModalDirective () {
       });
     }
   };
-}
+});
+/*jslint bitwise: true */
 
 
-/*
-* @license
-* angular-modal v0.5.0
-* (c) 2013 Brian Ford http://briantford.com
-* License: MIT
-*/
-
-
-// vModal service
-angular.module('vModal.services')
-.factory('vModal', vModalFactory);
-
-function vModalFactory ($animate, $compile, $rootScope, $controller, $q, $http, $templateCache, $document, modalConfig) {
+angular.module('pureModal')
+.factory('pureModal', ['$animate', '$compile', '$rootScope', '$controller', '$q', '$http', '$templateCache', '$document', 'modalConfig',
+function pureModalFactory ($animate, $compile, $rootScope, $controller, $q, $http, $templateCache, $document, modalConfig) {
   return function modalFactory (config) {
     if (!(!config.template ^ !config.templateUrl)) {
       throw new Error('Expected modal to have exacly one of either `template` or `templateUrl`');
     }
 
-    var controller    = config.controller || null,
-    controllerAs  = config.controllerAs,
-    container     = angular.element(config.container || $document[0].querySelector(modalConfig.containerSelector)),
-    element       = null,
+    var controller = config.controller || null,
+    controllerAs = config.controllerAs,
+    container = angular.element(config.container || $document[0].querySelector(modalConfig.containerSelector)),
+    element = null,
     html,
     scope;
 
@@ -170,16 +133,16 @@ function vModalFactory ($animate, $compile, $rootScope, $controller, $q, $http, 
     }
 
     function activate (locals) {
-      return html.then(function (html) {
+      return html.then(function ($html) {
         if (!element) {
-          attach(html, locals);
+          attach($html, locals);
         }
       });
     }
 
-
-    function attach (html, locals) {
-      element = angular.element(html);
+    function attach ($html, locals) {
+      var prop;
+      element = angular.element($html);
       if (element.length === 0) {
         throw new Error('The template contains no elements; you need to wrap text nodes');
       }
@@ -188,7 +151,7 @@ function vModalFactory ($animate, $compile, $rootScope, $controller, $q, $http, 
         if (!locals) {
           locals = {};
         }
-        for (var prop in locals) {
+        for (prop in locals) {
           scope[prop] = locals[prop];
         }
         var ctrl = $controller(controller, {$scope: scope});
@@ -196,7 +159,7 @@ function vModalFactory ($animate, $compile, $rootScope, $controller, $q, $http, 
           scope[controllerAs] = ctrl;
         }
       } else if (locals) {
-        for (var prop in locals) {
+        for (prop in locals) {
           scope[prop] = locals[prop];
         }
       }
@@ -225,11 +188,9 @@ function vModalFactory ($animate, $compile, $rootScope, $controller, $q, $http, 
     return {
       activate: activate,
       deactivate: deactivate,
+      open: activate,
+      close: deactivate,
       active: active
     };
   };
-}
-
-vModalFactory.$inject = ['$animate', '$compile', '$rootScope', '$controller', '$q', '$http', '$templateCache', '$document', 'modalConfig'];
-
-}(angular));
+}]);

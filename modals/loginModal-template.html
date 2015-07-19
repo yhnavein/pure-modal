@@ -1,0 +1,33 @@
+<pure-modal class="modal-light" onclose="loginModal.close()">
+  <pure-dialog heading="Account Login" small simple>
+    <pure-close label="Close" ng-click="close()"></pure-close>
+
+    <h3>Account Login</h3>
+    <form name="loginForm">
+      <div class="form-group">
+        <label for="emailInput">Email</label>
+        <input class="form-control" ng-model="model.email" type="email" id="emailInput" name="email" placeholder="hi@yourdomain.com">
+      </div>
+
+      <div class="form-group">
+        <label for="passwordInput">Password</label>
+        <input class="form-control" ng-model="model.password" type="password" id="passwordInput" name="password" placeholder="••••••">
+      </div>
+
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" ng-model="model.rememberMe" ng-checked="true" name="rememberMe"> Check me out
+        </label>
+      </div>
+    </form>
+
+    <hr>
+
+    <div class="modal-controls">
+      <button class="btn btn-default">Create Account</button>
+      <small class="muted">or</small>
+      <button class="btn btn-primary">Login</button>
+    </div>
+
+  </pure-dialog>
+</pure-modal>
