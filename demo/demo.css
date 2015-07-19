@@ -32,3 +32,14 @@ footer {
   background-position: center center;
   border-radius: 100%;
 }
+
+.theme-changer {
+
+}
+.theme-changer .pagination-sm {
+  margin: 0 0 0 12px;
+  vertical-align: middle;
+}
+.theme-changer .pagination-sm a {
+  cursor: pointer;
+}

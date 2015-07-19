@@ -15,3 +15,24 @@ function ($scope, loginModal, advLoginModal, bootstrapModal) {
     });
   };
 }]);
+
+app.controller('ThemeController', ['$scope',
+function ($scope) {
+
+  $scope.avThemes = [
+    { id: 'readable', isDark: false },
+    { id: 'slate', isDark: true },
+    { id: 'superhero', isDark: false },
+    { id: 'flatly', isDark: false },
+    { id: 'cerulean', isDark: false },
+    { id: 'darkly', isDark: false },
+    { id: 'united', isDark: false },
+    { id: 'cyborg', isDark: true }
+  ];
+  $scope.selTheme = $scope.avThemes[0];
+
+  $scope.changeTheme = function(theme) {
+    $scope.selTheme = $scope.avThemes.find(function(el) { return el.id === theme.id; });
+  };
+
+}]);
