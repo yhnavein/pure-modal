@@ -10,9 +10,11 @@
     <title>Pure Modal</title>
 
     <!-- CDNs -->
-    <!-- <link href='http://fonts.googleapis.com/css?family=Lato:300,700,300italic' rel='stylesheet' type='text/css'> -->
-    <!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet"> -->
-    <!-- <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.5/slate/bootstrap.min.css" rel="stylesheet"> -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.5/{{selTheme.id}}/bootstrap.min.css" rel="stylesheet">
+
+    <link href="./dist/pure-modal.css" rel="stylesheet">
+    <link href="./demo/demo.css" rel="stylesheet">
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sugar/1.4.1/sugar-full.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular-animate.min.js"></script>
@@ -27,10 +29,6 @@
   </head>
 
   <body ng-controller="ThemeController">
-    <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.5/{{selTheme.id}}/bootstrap.min.css" rel="stylesheet">
-
-    <link href="./dist/pure-modal.css" rel="stylesheet">
-    <link href="./demo/demo.css" rel="stylesheet">
 
     <div class="jumbotron">
       <div>

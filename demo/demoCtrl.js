@@ -16,23 +16,27 @@ function ($scope, loginModal, advLoginModal, bootstrapModal) {
   };
 }]);
 
-app.controller('ThemeController', ['$scope',
-function ($scope) {
+app.controller('ThemeController', ['$scope', '$rootScope',
+function ($scope, $rootScope) {
 
   $scope.avThemes = [
     { id: 'readable', isDark: false },
     { id: 'slate', isDark: true },
-    { id: 'superhero', isDark: false },
+    { id: 'superhero', isDark: true },
     { id: 'flatly', isDark: false },
     { id: 'cerulean', isDark: false },
-    { id: 'darkly', isDark: false },
+    { id: 'darkly', isDark: true },
     { id: 'united', isDark: false },
     { id: 'cyborg', isDark: true }
   ];
-  $scope.selTheme = $scope.avThemes[0];
+  $rootScope.selTheme = $scope.avThemes[0];
 
   $scope.changeTheme = function(theme) {
-    $scope.selTheme = $scope.avThemes.find(function(el) { return el.id === theme.id; });
+    $rootScope.selTheme = $scope.avThemes.find(function(el) { return el.id === theme.id; });
+  };
+
+  $rootScope.getModalTheme = function() {
+    return ($rootScope.selTheme.isDark ? 'dark' : 'light');
   };
 
 }]);
