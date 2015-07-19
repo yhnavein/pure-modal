@@ -55,8 +55,8 @@ gulp.task('test', function (done) {
   }, done);
 });
 
-gulp.task('deploy-pages', function (done) {
-  return gulp.src(['./dist/*', './demo/**/*', 'index.html'])
+gulp.task('deploy-pages', function() {
+  return gulp.src(['./dist/**/*', './demo/**/*', 'index.html', 'README.md'], { cdw: './', base: './' })
     .pipe(ghPages());
 });
 

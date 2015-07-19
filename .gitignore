@@ -19,3 +19,6 @@ bower
 
 # Sublime
 *.sublime-*
+
+# Published gh-pages
+.publish/
