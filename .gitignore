@@ -22,3 +22,6 @@ bower
 
 # Published gh-pages
 .publish/
+
+#Coverage
+coverage/
