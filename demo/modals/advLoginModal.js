@@ -9,7 +9,17 @@ app.factory('advLoginModal', ['pureModal', function(pureModal) {
 }]);
 
 app.controller('AdvLoginController', ['$scope', 'advLoginModal', function ($scope, advLoginModal) {
+  $scope.loginModel = {};
+
   $scope.close = function() {
     advLoginModal.close();
+  };
+
+  $scope.processLogin = function() {
+    if($scope.loginModel.email === 'demo@demo.com' && $scope.loginModel.password === 'demo') {
+      $scope.success($scope.loginModel);
+      advLoginModal.close();
+      return;
+    }
   };
 }]);

@@ -16,8 +16,8 @@
     <link href="./demo/demo.css" rel="stylesheet">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sugar/1.4.1/sugar-full.min.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular-animate.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular-animate.min.js"></script>
 
     <script src="./dist/pure-modal.js"></script>
     <script src="./demo/app.js"></script>
@@ -51,10 +51,26 @@
 
     <div class="container" ng-controller="DemoController">
 
-      <div>
+      <div class="example-modals">
         <button class="btn btn-primary" ng-click="openLoginModal()">Really Simple Modal</button>
         <button class="btn btn-primary" ng-click="openLoginAdvModal()">Login Modal</button>
         <button class="btn btn-primary" ng-click="openBootstrapModal()">Bootstrap Modal</button>
+      </div>
+
+      <div>
+        <legend>Sample Login Modal</legend>
+        <button class="btn btn-primary" ng-click="openLoginAdvModal()">Login Modal</button>
+        <p class="explanation">In this example you will see simple modal box with login form. </p>
+        <div class="history">
+          <table>
+            <tbody>
+              <tr ng-repeat="hist in loginMsgs">
+                <td>{{hist.msg}}</td>
+                <td>{{hist.data | json}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
 
     </div>

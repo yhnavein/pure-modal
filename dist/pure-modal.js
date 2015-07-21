@@ -2,7 +2,7 @@
  * pureModal - based on vModal - Simple and beautiful modals for AngularJS and Twitter Bootstrap
  * @version v1.3.2
  * @link http://yhnavein.github.io/pure-modal
- * @author Piotrek Dąbrowski <admin@puredev.eu>
+ * @author PureDev Piotrek Dąbrowski <admin@puredev.eu>
  * @license MIT License, http://www.opensource.org/licenses/MIT
  */
 
@@ -164,7 +164,7 @@ function pureModalFactory ($animate, $compile, $rootScope, $controller, $q, $htt
         }
       }
       $compile(element)(scope);
-      container.attr('v-modal-open', '');
+      container.attr('pure-modal-open', '');
       return $animate.enter(element, container);
     }
 
@@ -173,11 +173,14 @@ function pureModalFactory ($animate, $compile, $rootScope, $controller, $q, $htt
         return $q.when();
       }
       return $animate.leave(element).then(function () {
+        if(angular.isFunction(scope.onClose))
+          scope.onClose();
+
         scope.$destroy();
         scope = null;
         element.remove();
         element = null;
-        container.removeAttr('v-modal-open');
+        container.removeAttr('pure-modal-open');
       });
     }
 

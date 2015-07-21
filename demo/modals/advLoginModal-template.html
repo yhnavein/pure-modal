@@ -8,26 +8,26 @@
       <form name="loginForm">
         <div class="form-group">
           <label for="emailInput">Email</label>
-          <input class="form-control" ng-model="model.email" type="email" id="emailInput" name="email" placeholder="hi@yourdomain.com">
+          <input class="form-control" ng-model="loginModel.email" type="email" id="emailInput" name="email" placeholder="demo@demo.com">
         </div>
 
         <div class="form-group">
           <label for="passwordInput">Password</label>
-          <input class="form-control" ng-model="model.password" type="password" id="passwordInput" name="password" placeholder="••••••">
+          <input class="form-control" ng-model="loginModel.password" type="password" id="passwordInput" name="password" placeholder="demo">
         </div>
 
         <div class="checkbox">
           <label>
-            <input type="checkbox" ng-model="model.rememberMe" ng-checked="true" name="rememberMe"> Check me out
+            <input type="checkbox" ng-model="loginModel.rememberMe" ng-checked="true" name="rememberMe"> Check me out
           </label>
         </div>
       </form>
     </div>
 
     <div class="pure-controls">
-      <button class="btn btn-default">Create Account</button>
+      <button class="btn btn-default" ng-click="close()">Eh... Whatever</button>
       <small class="muted">or</small>
-      <button class="btn btn-primary">Login</button>
+      <button class="btn btn-primary" ng-click="processLogin()">Login</button>
     </div>
   </pure-dialog>
 </pure-modal>

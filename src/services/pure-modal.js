@@ -59,7 +59,7 @@ function pureModalFactory ($animate, $compile, $rootScope, $controller, $q, $htt
         }
       }
       $compile(element)(scope);
-      container.attr('v-modal-open', '');
+      container.attr('pure-modal-open', '');
       return $animate.enter(element, container);
     }
 
@@ -68,11 +68,14 @@ function pureModalFactory ($animate, $compile, $rootScope, $controller, $q, $htt
         return $q.when();
       }
       return $animate.leave(element).then(function () {
+        if(angular.isFunction(scope.onClose))
+          scope.onClose();
+
         scope.$destroy();
         scope = null;
         element.remove();
         element = null;
-        container.removeAttr('v-modal-open');
+        container.removeAttr('pure-modal-open');
       });
     }
 
