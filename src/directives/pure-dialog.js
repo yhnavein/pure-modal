@@ -10,11 +10,7 @@ angular.module('pureModal')
       heading: '@',
       role: '@'
     },
-    link: function (scope, iElement, iAttrs, modalCtrl, transclude) {
-      // transclude(scope.$parent, function(clone, scope) {
-      //   iElement.append(clone);
-      // });
-
+    link: function (scope, iElement, iAttrs) {
       if (scope.heading) {
         iAttrs.$set('aria-label', scope.heading);
       }

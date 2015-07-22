@@ -68,8 +68,9 @@ function pureModalFactory ($animate, $compile, $rootScope, $controller, $q, $htt
         return $q.when();
       }
       return $animate.leave(element).then(function () {
-        if(angular.isFunction(scope.onClose))
+        if(angular.isFunction(scope.onClose)) {
           scope.onClose();
+        }
 
         scope.$destroy();
         scope = null;
