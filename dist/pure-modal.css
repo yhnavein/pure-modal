@@ -102,9 +102,9 @@ pure-modal.modal-light pure-dialog {
 }
 pure-modal.modal-light pure-dialog .pure-header {
   border-bottom-color: #E2E1E1;
-  background-image: -webkit-linear-gradient(top, #ffffff 0%, #eeeeee 100%);
-  background-image: -o-linear-gradient(top, #ffffff 0%, #eeeeee 100%);
-  background-image: linear-gradient(to bottom, #ffffff 0%, #eeeeee 100%);
+  background-image: -webkit-linear-gradient(top, #fff 0%, #eee 100%);
+  background-image: -o-linear-gradient(top, #fff 0%, #eee 100%);
+  background-image: linear-gradient(to bottom, #fff 0%, #eee 100%);
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffeeeeee', GradientType=0);
   border-radius: 4px 4px 0 0;

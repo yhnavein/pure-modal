@@ -10,7 +10,7 @@ var banner = '/**\n' +
       ' */\n\n';
 
 var gulp = require('gulp'),
-    karma = require('karma').server,
+    KarmaServer = require('karma').Server,
     concat = require('gulp-concat'),
     uglify = require('gulp-uglify'),
     replace = require('gulp-replace'),
@@ -48,10 +48,12 @@ gulp.task('styles', function() {
 });
 
 gulp.task('test', function (done) {
-  karma.start({
+  var server = new KarmaServer({
     configFile: __dirname + '/test/karma.conf.js',
     singleRun: true
   }, done);
+
+  server.start();
 });
 
 gulp.task('deploy-pages', function() {
