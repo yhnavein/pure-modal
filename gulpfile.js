@@ -11,7 +11,6 @@ var banner = '/**\n' +
 
 var gulp = require('gulp'),
     karma = require('karma').server,
-    jshint = require('gulp-jshint'),
     concat = require('gulp-concat'),
     uglify = require('gulp-uglify'),
     replace = require('gulp-replace'),
@@ -60,19 +59,7 @@ gulp.task('deploy-pages', function() {
     .pipe(ghPages());
 });
 
-gulp.task('lint-src', function() {
-  return gulp.src([ 'src/**/*.js' ])
-    .pipe(jshint('.jshintrc'))
-    .pipe(jshint.reporter('jshint-stylish'));
-});
-
-gulp.task('lint-tests', function() {
-  return gulp.src([ 'test/**/*Spec.js' ])
-    .pipe(jshint('.jshintrc'))
-    .pipe(jshint.reporter('jshint-stylish'));
-});
-
-gulp.task('default', ['lint-src', 'test', 'scripts', 'styles']);
+gulp.task('default', ['test', 'scripts', 'styles']);
 
 gulp.task('watch', function() {
   gulp.watch('src/**/*.js', ['lint-src', 'scripts']);
